@@ -1,13 +1,4 @@
-package Utlity;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package utility;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,23 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 
 public class BaseDriver {
@@ -44,7 +18,7 @@ public class BaseDriver {
         Logger logger= Logger.getLogger(""); // output yapılan logları al.
         logger.setLevel(Level.SEVERE); // sadece ERROR ları göster
 
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(); // jenkins deyken : sen head olmadan yani hafızada çalış
         //driver.manage().window().maximize(); // Ekranı max yapıyor.
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20)); // 20 sn mühlet: sayfayı yükleme mühlet
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));  // 20 sn mühlet: elementi bulma mühleti
@@ -52,11 +26,7 @@ public class BaseDriver {
     }
 
     public static void BekleVeKapat(){
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        MyFunc.Bekle(5);
         driver.quit();
     }
 
